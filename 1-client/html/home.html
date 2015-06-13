@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Hello World</title>
+    </head>
+    <body>
+    <div class="page-header">
+        <h1>{{welcome}}</h1>
+        <medium>Interoperable functional programming | Powered by Docker VM.</medium>
+    </div> 
+        
+        
+        <!-- <div ui-view></div> -->
+        <!-- <div ui-view="viewA"></div> -->
+    
+        <div class="blocktainer col-md-12">
+            <div class="alert alert-info" role="alert">
+              <p>Processing Step 1</p>
+            </div>
+            <div id="myform" ng-controller="FormController">
+              <div id="formpanel" class="col-md-6">
+                  <form novalidate class="simple-form">
+                    Data input: <select ng-model="transpo.infile" ng-options="item.file as item.name for item in items"></select>
+                    Command (language): <input ng-model="transpo.lingocmd" /><br />
+                    Script Name: <input ng-model="transpo.scriptname" /><br />
+                    Code: <textarea id="codebox" type="text" ng-model="transpo.scriptcontent" /><br />
+                    <input type="button" ng-click="reset()" value="Reset" />
+                    <input type="submit" ng-click="update(transpo); scriptwriter(transpo)" value="Save" />
+                  </form>    
+              </div>
+              <div id="previewpanel" class="col-md-6">
+                <pre>Preview = {{transpo | json}}</pre>
+                <pre>Submitted = {{master | json}}</pre>
+              </div>
+            </div>            
+        </div>
+
+
+        <div class="blocktainer col-md-12">
+            <div class="alert alert-info" role="alert">
+              <p>Processing Step 2</p>
+            </div>
+            <div id="myform" ng-controller="FormController">
+              <div id="formpanel" class="col-md-6">
+                  <form novalidate class="simple-form">
+                    Data input: <select ng-model="transpo.infile" ng-options="item.file as item.name for item in items"></select>
+                    Command (language): <input ng-model="transpo.lingocmd" /><br />
+                    Script Name: <input ng-model="transpo.scriptname" /><br />
+                    Code: <textarea id="codebox" type="text" ng-model="transpo.scriptcontent" /><br />
+                    <input type="button" ng-click="reset()" value="Reset" />
+                    <input type="submit" ng-click="update(transpo); scriptwriter(transpo)" value="Save" />
+                  </form>    
+              </div>
+              <div id="previewpanel" class="col-md-6">
+                <pre>Preview = {{transpo | json}}</pre>
+                <pre>Submitted = {{master | json}}</pre>
+              </div>
+            </div>            
+        </div>
+
+    </body>
+</html>

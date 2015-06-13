@@ -1,0 +1,15 @@
+{
+  "name": "io.playground",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -e js,html,scss,css 2-server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "gskerry",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.12.4"
+  }
+}
