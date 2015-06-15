@@ -1,0 +1,150 @@
+<!-- 
+
+TITLE: FRONT END FOR FUNC.IO
+AUTHOR: MAX KAYEN
+DATE: 6/12/2015
+LIBRARIES:
+	JQUERY
+	JOINTJS
+	ACE
+
+ -->
+
+<html>
+<head>
+
+<!-- FRONT END LIBRARIES -->
+<script src="http://www.jointjs.com/js/joint.all.min.js"></script>
+<script src="http://d1n0x3qji82z53.cloudfront.net/src-min-noconflict/ace.js" 
+	type="text/javascript" charset="utf-8"></script>
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet" type="text/css" href="styles.css">
+<link rel="stylesheet" href="http://www.jointjs.com/css/joint.all.min.css" />
+</head>        
+
+<body>
+
+	<button id="addPython" type="button" onclick="addPython()">Python</button>
+	<button id="addRuby" type="button" onclick="addRuby()">Ruby</button>
+	<button id="addNode" type="button" onclick="addNode()">Node</button>
+	<button id="addDataSource" type="button" 
+		onclick="addDataSource()">Data Source</button>
+
+	<div id="testTab"></div>
+	<div id="myholder"></div>
+
+<!-- ACE EDITOR DEFAULT VIEW -->
+
+	<div id="editor">
+		<div id="editorText">
+		</div>
+	</div>
+
+<!-- ACE SCRIPT -->
+
+<script>
+        var editor = ace.edit("editor");
+        editor.getSession().setUseWorker(false);
+        editor.setTheme("ace/theme/monokai");
+        editor.getSession().setMode("ace/mode/javascript");
+</script>
+
+<!-- JOINT JS SCRIPT -->
+
+	<script type="text/javascript">
+		var graph = new joint.dia.Graph;
+
+		var paper = new joint.dia.Paper({
+		    el: $('#myholder'),
+		    width: 800,
+		    height: 400,
+		    model: graph
+		});
+
+		var addPython = function(){
+			var rect = new joint.shapes.devs.Model({
+				position: {x: 100, y: 30 },
+				size: { width: 100, height: 100},
+				inPorts: ['in'],
+				outPorts: ['out'],
+				attrs: { 
+					'.label': { text: 'Python', fill: 'white' },
+					rect: { fill: 'blue'}, 
+				}
+			});
+
+			console.log(rect.id)
+
+			graph.addCell(rect);
+		};
+
+
+		var addRuby = function(){
+			var rect = new joint.shapes.devs.Model({
+				position: {x: 100, y: 30 },
+				size: { width: 100, height: 100},
+				inPorts: ['in'],
+				outPorts: ['out'],
+				attrs: { 
+					'.label': { text: 'Ruby', fill: 'white' },
+					rect: { fill: 'red' }, 
+				}
+			});
+
+			console.log(rect.id)
+
+			graph.addCell(rect);
+		};
+
+		var addNode = function(){
+			var rect = new joint.shapes.devs.Model({
+				position: {x: 100, y: 30 },
+				size: { width: 100, height: 100},
+				inPorts: ['in'],
+				outPorts: ['out'],
+				attrs: { 
+					'.label': { text: 'Node', fill: 'white' },
+					rect: { fill: 'green' }, 
+				}
+			});8
+
+			console.log(rect.id)
+
+			graph.addCell(rect);
+		};
+
+		var addDataSource = function(){
+			var rect = new joint.shapes.devs.Model({
+				position: {x: 100, y: 30 },
+				size: { width: 100, height: 100},
+				// inPorts: ['in'],
+				outPorts: ['out'],
+				attrs: { 
+					'.label': { text: 'Data Source', fill: 'white' },
+					rect: { fill: 'orange' }, 
+				}
+			});
+
+			console.log(rect.id)
+
+			graph.addCell(rect);
+		};
+
+		paper.on('cell:pointerdown', function(cellView, evt, x, y) { 
+        	$('#testTab').text('cell view ' + cellView.model.id + ' was clicked');
+		});
+
+		// Figure out how to Style the links
+
+		// var link = joint.dia.Link({}).attr({
+		//     '.connection': { stroke: 'blue' },
+		//     '.marker-source': { fill: 'red', d: 'M 10 0 L 0 5 L 10 10 z' },
+		//     '.marker-target': { fill: 'yellow', d: 'M 10 0 L 0 5 L 10 10 z' }
+		// })
+
+	</script>
+</body>
+
+</html>
