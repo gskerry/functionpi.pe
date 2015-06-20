@@ -1,10 +1,12 @@
-var app = angular.module('ioplayground', ["ui.router", "ui.bootstrap"]).run(function($rootScope) {
+var app = angular.module('ioplayground', ["ui.router", "ui.bootstrap"])
+	.run(function($rootScope) {
 	$rootScope.$on("$stateChangeError", console.log.bind(console));
 });
 
 
 app.config(function ($urlRouterProvider, $locationProvider) {
-    // This turns off hashbang urls (/#about) and changes it to something normal (/about)
+    // This turns off hashbang urls (/#about) and changes 
+    // it to something normal (/about)
     $locationProvider.html5Mode(true);
     // If we go to a URL that ui-router doesn't have registered, go to the "/" url.
     $urlRouterProvider.otherwise('/');
@@ -67,6 +69,20 @@ app.controller('FormController', function ($scope, $http) {
 
 	$scope.reset();
 });
+
+
+app.directive('diagram', function (){
+	return{
+		restrict: 'E',
+		templateUrl: 'html/diagram.html'
+	}
+}); //directive for JointJS images
+
+app.controller('DiagramCtrl', function ($scope, $http){
+
+});
+
+
 
 /*
 app.controller('FormController', ['$scope', function($scope, $http) {

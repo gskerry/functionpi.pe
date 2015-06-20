@@ -1,0 +1,103 @@
+	  <button id="addPython" type="button" onclick="addPython()">Python</button>
+      <button id="addRuby" type="button" onclick="addRuby()">Ruby</button>
+      <button id="addNode" type="button" onclick="addNode()">Node</button>
+      <button id="addDataSource" type="button" 
+        onclick="addDataSource()">Data Source</button>
+
+  	<div id="testTab"></div>
+  	<div id="myholder"></div>
+
+<!-- JOINT JS SCRIPT -->
+
+	<script type="text/javascript">
+		var graph = new joint.dia.Graph;
+
+		var paper = new joint.dia.Paper({
+		    el: $('#myholder'),
+		    width: 800,
+		    height: 400,
+		    model: graph
+		});
+
+		var addPython = function(){
+			var rect = new joint.shapes.devs.Model({
+				position: {x: 100, y: 30 },
+				size: { width: 100, height: 100},
+				inPorts: ['in'],
+				outPorts: ['out'],
+				attrs: { 
+					'.label': { text: 'Python', fill: 'white' },
+					rect: { fill: 'blue'}, 
+				}
+			});
+
+			console.log(rect.id)
+
+			graph.addCell(rect);
+		};
+
+
+		var addRuby = function(){
+			var rect = new joint.shapes.devs.Model({
+				position: {x: 100, y: 30 },
+				size: { width: 100, height: 100},
+				inPorts: ['in'],
+				outPorts: ['out'],
+				attrs: { 
+					'.label': { text: 'Ruby', fill: 'white' },
+					rect: { fill: 'red' }, 
+				}
+			});
+
+			console.log(rect.id)
+
+			graph.addCell(rect);
+		};
+
+		var addNode = function(){
+			var rect = new joint.shapes.devs.Model({
+				position: {x: 100, y: 30 },
+				size: { width: 100, height: 100},
+				inPorts: ['in'],
+				outPorts: ['out'],
+				attrs: { 
+					'.label': { text: 'Node', fill: 'white' },
+					rect: { fill: 'green' }, 
+				}
+			});8
+
+			console.log(rect.id)
+
+			graph.addCell(rect);
+		};
+
+		var addDataSource = function(){
+			var rect = new joint.shapes.devs.Model({
+				position: {x: 100, y: 30 },
+				size: { width: 100, height: 100},
+				// inPorts: ['in'],
+				outPorts: ['out'],
+				attrs: { 
+					'.label': { text: 'Data Source', fill: 'white' },
+					rect: { fill: 'orange' }, 
+				}
+			});
+
+			console.log(rect.id)
+
+			graph.addCell(rect);
+		};
+
+		paper.on('cell:pointerdown', function(cellView, evt, x, y) { 
+        	$('#testTab').text('cell view ' + cellView.model.id + ' was clicked');
+		});
+
+		// Figure out how to Style the links
+
+		// var link = joint.dia.Link({}).attr({
+		//     '.connection': { stroke: 'blue' },
+		//     '.marker-source': { fill: 'red', d: 'M 10 0 L 0 5 L 10 10 z' },
+		//     '.marker-target': { fill: 'yellow', d: 'M 10 0 L 0 5 L 10 10 z' }
+		// })
+
+	</script>
